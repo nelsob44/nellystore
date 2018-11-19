@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductResource;
-
+use App\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -16,7 +18,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        return ProductResource::collection(Product::latest()->get());
+        return ProductResource::collection(Product::latest()->paginate(5));
     }
 
     /**
@@ -34,7 +36,7 @@ class ProductController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+    */
     public function store(Request $request)
     {
         $exploded = explode(',', $request->image);
@@ -49,12 +51,14 @@ class ProductController extends Controller
         $path = public_path().'/'.$fileName;
 
         file_put_contents($path, $decoded);
-        //auth()->user()->product()->create($request->all());
+        
+        \Log::info($request->all());
         $product = Product::create($request->except('image') + [
-            'user_id' => Auth::id(),
+            'user_id' => auth()->user()->id,
+            'category_id' => '1',
             'image' => $fileName
-        ]);
-        return response('Product Created', 201);
+            ]);
+        return $product;
     }
 
     /**

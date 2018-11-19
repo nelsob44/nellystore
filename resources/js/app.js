@@ -18,6 +18,18 @@ window.User = User
 
 window.EventBus = new Vue();
 
+
+import BootstrapVue from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue);
+
+
+//Vue.http.headers.common['Authorization'] = 'Bearer ipYsEVE2JIE4K4gPTC6WtgytBAn17pPY'
+  
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

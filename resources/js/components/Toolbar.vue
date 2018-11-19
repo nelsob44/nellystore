@@ -1,7 +1,7 @@
 <template>
   <v-toolbar>
     <v-toolbar-side-icon></v-toolbar-side-icon>
-    <v-toolbar-title>Nellystore</v-toolbar-title>
+    <v-toolbar-title>Nellystore</v-toolbar-title>&nbsp;&nbsp;&nbsp;<span class="grey--text"><small>{{user}}</small></span>
     <v-spacer></v-spacer>
     <div class="hidden-sm-and-down">
       <router-link 
@@ -30,19 +30,20 @@ export default {
       {title: 'Login', to:'/login', show: !User.loggedIn()},
       {title: 'Logout', to:'/logout', show: User.loggedIn()},
     ],
-    user: {}
+    user: ''
     }
   },
   created(){
     EventBus.$on('logout', () => {
-      User.+logout()
+      User.logout()
     })
+    if(User.loggedIn()){
+      this.user = User.name()
+    }
+     
   },
   methods: {
-    useronline(){
-        axios.get('/api/auth/me')
-        .then(res => this.user = res.data.data)
-        console.log(res.data.data)
+    
   }
 }
 </script>

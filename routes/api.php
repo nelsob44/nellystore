@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 Route::apiResource('/product', 'ProductController');
 Route::apiResource('/category', 'CategoryController');
-Route::apiResource('/payment', 'PaymentController');
+Route::middleware('auth:api')->post('/charge', 'PaymentController@charge');
 
 Route::group([
 
@@ -18,5 +18,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    //Route::post('charge', 'PaymentController@charge');
 
 });
