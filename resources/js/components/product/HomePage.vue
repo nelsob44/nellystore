@@ -239,9 +239,8 @@ export default {
                 cvv: ''
             },
             email: '',
-            user_id: '',
-            
-                                     
+            user_id: ''
+                                                
         }
     },
     
