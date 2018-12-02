@@ -4,7 +4,7 @@ class Token {
         const payload = this.payload(token);
         console.log(payload.iss)
         if(payload){
-            return payload.iss == "http://nellystore.dev/api/auth/login" || "http://nellystore.dev/api/auth/signup" ? true : false
+            return payload.iss == "http://45.76.142.59/api/auth/login" || "http://45.76.142.59/api/auth/signup" ? true : false
         }
         return false
     }

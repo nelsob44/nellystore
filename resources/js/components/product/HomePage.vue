@@ -150,7 +150,7 @@
                     </v-card-title>
                         <v-card-text>
                             <v-img
-                                :src="'http://nellystore.dev/' + product.image"
+                                :src="'http://45.76.142.59/' + product.image"
                                 height="300px"
                                 contain
                             ></v-img>

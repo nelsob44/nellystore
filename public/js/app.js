@@ -76699,7 +76699,7 @@ var Token = function () {
             var payload = this.payload(token);
             console.log(payload.iss);
             if (payload) {
-                return payload.iss == "http://nellystore.dev/api/auth/login" || "http://nellystore.dev/api/auth/signup" ? true : false;
+                return payload.iss == "http://45.76.142.59/api/auth/login" || "http://45.76.142.59/api/auth/signup" ? true : false;
             }
             return false;
         }
@@ -93437,7 +93437,7 @@ var render = function() {
                       [
                         _c("v-img", {
                           attrs: {
-                            src: "http://nellystore.dev/" + product.image,
+                            src: "http://45.76.142.59/" + product.image,
                             height: "300px",
                             contain: ""
                           }
